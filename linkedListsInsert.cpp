@@ -13,9 +13,36 @@ void printList(Node* head){
     }
 }
 
+void Reverse(){
+    Node *prev, *current, *next;
+    current = head;
+    prev = NULL;
+    while(current != NULL){
+        next = current->next;
+        current->next = prev;
+        prev = current;
+        current = next; 
+    }
+    head = prev;
+}
 
-void insertElement(int x, int position)
-{
+void Delete(int n){
+    Node* temp1 = head;
+    if(n==1){
+        head = temp1->next,
+        delete temp1;
+        return;
+    }
+    int i;
+    for(i=0; i<n-2; i++){
+        temp1 = temp1 -> next;
+    }
+    Node* temp2 = temp1->next;
+    temp1->next = temp2->next;
+    delete temp2;
+}
+
+void insertElement(int x, int position){
     Node* temp = new Node();
     temp->data = x;
 
@@ -44,6 +71,13 @@ int main(){
  
     printList(head);
 
+    Delete(1);
+
+    printList(head);
+    
+    Reverse();
+    
+    printList(head);
     return 0;
 }
 
