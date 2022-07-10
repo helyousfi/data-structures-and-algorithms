@@ -9,15 +9,22 @@ void printList(Node* head){
     std::cout << "The list is : " << std::endl;
     while(head != NULL){
         std::cout << head->data << " ";
+        std::cout << "\n";
         head = head->next;
     }
+}
+
+void printRecursive(Node* p){
+    if(p==NULL){return;}
+    std::cout << p->data << std::endl;
+    printRecursive(p->next);
 }
 
 void Reverse(){
     Node *prev, *current, *next;
     current = head;
     prev = NULL;
-    while(current != NULL){
+    while(current != NULL){ 
         next = current->next;
         current->next = prev;
         prev = current;
@@ -78,6 +85,9 @@ int main(){
     Reverse();
     
     printList(head);
+    
+    std::cout << "The list is (recursive): " << std::endl;
+    printRecursive(head);
     return 0;
 }
 
