@@ -20,6 +20,12 @@ void printRecursive(Node* p){
     printRecursive(p->next);
 }
 
+void printInverseRecursive(Node* p){
+    if(p==NULL){return;}
+    printInverseRecursive(p->next);
+    std::cout << p->data << std::endl;
+}
+
 void Reverse(){
     Node *prev, *current, *next;
     current = head;
@@ -32,6 +38,18 @@ void Reverse(){
     }
     head = prev;
 }
+
+void ReverseRecursive(Node* p){
+    if(p->next == NULL){
+        head = p;
+        return;
+    }
+    ReverseRecursive(p->next);
+    Node* q = p->next;
+    q->next = p;
+    p->next = NULL;
+}
+
 
 void Delete(int n){
     Node* temp1 = head;
@@ -82,12 +100,12 @@ int main(){
 
     printList(head);
     
-    Reverse();
+    ReverseRecursive(head);
     
     printList(head);
     
     std::cout << "The list is (recursive): " << std::endl;
-    printRecursive(head);
+    printInverseRecursive(head);
     return 0;
 }
 
