@@ -1,4 +1,6 @@
 # data-structures-and-algorithms
+The aim of this repository is to master the following concepts :
+  - C/C++ essentials.
   - Recursion.
   - Linked lists.
   - Doubly Linked lists.
