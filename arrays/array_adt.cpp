@@ -1,11 +1,13 @@
 #include<iostream>
 
+// Define array as a structure
 struct Array
 {
     int *A;
     int size;
 };
 
+// Display the array
 void Display(Array arr)
 {
     std::cout << "The elements are :" << std::endl;
@@ -13,7 +15,6 @@ void Display(Array arr)
         std::cout << arr.A[i] << " ";
     }
 }
-
 
 int main()
 {
