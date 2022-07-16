@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#define MIN_INT -32768
+#define MAX_INT 32768
 
 struct Node{
     int data;
@@ -85,6 +87,51 @@ int sum_recursive(struct Node *p)
     return sum_recursive(p->next) + p->data;
 }
 
+// Max element
+int max(struct Node *p)
+{
+    int M = MIN_INT;
+    while(p!=NULL)
+    {
+        if(p->data>M)
+        {
+            M = p->data;
+        }
+        p = p->next;
+    }
+    return M;
+}
+
+// Max recursive
+int max_recursive(struct Node* p)
+{
+    int x;
+    if(p==NULL){
+        return MIN_INT;}
+    x = max_recursive(p->next);
+    if (p->data < x){
+        return x;
+    } 
+    else{
+        return p->data;
+    }
+}
+
+
+// Min element
+int min(struct Node *p)
+{
+    int M = MAX_INT;
+    while(p!=NULL)
+    {
+        if(p->data<M)
+        {
+            M = p->data;
+        }
+        p = p->next;
+    }
+    return M;
+}
 
 
 int main()
@@ -93,6 +140,6 @@ int main()
     int n = 6;
     create(A, n);
     Display_recursive(first);
-    printf("sum is %d", sum_recursive(first));
+    printf("\nmax_recursive is %d", max_recursive(first));
     return 0;
 }
