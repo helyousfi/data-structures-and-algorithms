@@ -134,6 +134,10 @@ int min(struct Node *p)
 }
 
 
+// Search in a linked list
+
+
+
 int main()
 {
     int A[] = {4, 5, 8, 1, 6, 20};
