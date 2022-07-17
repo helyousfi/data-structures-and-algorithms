@@ -135,6 +135,33 @@ int min(struct Node *p)
 
 
 // Search in a linked list
+struct Node* search(struct Node* p, int key)
+{
+    while(p!=NULL){
+        if(key==p->data){
+            return p;
+        }
+        p = p->next;
+    }
+    return NULL;
+}
+
+// Recursive function
+struct Node* search_recursive(struct Node* p, int key)
+{
+    if(p==NULL)
+    {
+        return NULL;
+    }
+    if(key == p->data)
+    {
+        return p;
+    }
+    return search_recursive(p->next, key);
+}
+
+ 
+
 
 
 
@@ -144,6 +171,7 @@ int main()
     int n = 6;
     create(A, n);
     Display_recursive(first);
-    printf("\nmax_recursive is %d", max_recursive(first));
+    printf("\nmax_recursive is %d", search(first, 6));
+    printf("\nmax_recursive is %d", search_recursive(first, 6));
     return 0;
 }
