@@ -161,7 +161,41 @@ struct Node* search_recursive(struct Node* p, int key)
 }
 
  
+// Improve search : move to front
+struct Node* search2(struct Node* p, int key)
+{
+    struct Node *q=NULL;
 
+    while(p!=NULL)
+    {
+        q=p;
+        if(key==p->data)
+        {
+            q->next=p->next;
+            p->next=first;
+            first=p;
+            return p; 
+        }
+        printf("\nokkkkkkkk kk");
+        p = p->next;
+    }
+    return NULL;
+}
+
+
+
+void insert(int x, int index, struct Node* p)
+{
+    struct Node* t = (struct Node*)malloc(sizeof(struct Node));
+    p->data = x;
+
+    for(int i=0; i<index-1; i++)
+    {
+        p = p->next;
+    }
+    t->next = p->next;
+    p->next = t;
+}
 
 
 
@@ -171,7 +205,8 @@ int main()
     int n = 6;
     create(A, n);
     Display_recursive(first);
-    printf("\nmax_recursive is %d", search(first, 6));
-    printf("\nmax_recursive is %d", search_recursive(first, 6));
+    //printf("\nmax_recursive is %d", search(first, 6));
+    printf("\nmax_recursive is %d", search2(first, 6));
+    Display(first);
     return 0;
 }
