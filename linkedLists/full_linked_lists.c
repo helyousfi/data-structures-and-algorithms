@@ -182,21 +182,17 @@ struct Node* search2(struct Node* p, int key)
     return NULL;
 }
 
-
-
-void insert(int x, int index, struct Node* p)
+void insert(int data, struct Node* p, int index)
 {
-    struct Node* t = (struct Node*)malloc(sizeof(struct Node));
-    p->data = x;
-
+    struct Node* temp = (struct Node*)malloc(sizeof(struct Node));
+    temp->data = data;
     for(int i=0; i<index-1; i++)
     {
         p = p->next;
     }
-    t->next = p->next;
-    p->next = t;
+    temp->next = p->next;
+    p->next = temp;
 }
-
 
 
 int main()
